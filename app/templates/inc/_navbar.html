@@ -1,0 +1,14 @@
+<div id="NavBar">
+    <ul>
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url 'imagecreate' %}">Создание QR Кода</a></li>
+            <li><a href="{% url 'imagelist' %}">Список QR Кодов</a></li>
+            <li>|</li>
+            <li><a href="{% url 'logout' %}">Выйти</a></li>
+        {% else %}
+            <li><a href="{% url 'register' %}">Регистрация</a></li>
+            <li>/</li>
+            <li><a href="{% url 'login' %}">Авторизация</a></li>
+        {% endif %}
+    </ul>
+</div>

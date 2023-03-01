@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %} Список QR-кодов {% endblock %}
+{% block head %}
+    <style>
+        .head {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            z-index: 2;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .table {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+            width: 90%;
+            height: 60px;
+        }
+        .img_base {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 10px;
+        }
+        .img_qr {
+            width: 50px;
+            height: 50px;
+        }
+
+        .modal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            z-index: 10;
+
+            background-color: rgba(255, 255, 255, 0.9);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal img {
+            width: 70%;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="head">
+        <div class="table">
+            <h2>ID</h2>
+            <h2>Image</h2>
+            <h2>QRCode</h2>
+        </div>
+        {% for i in list %}
+            <a class="table" href="{{ i.url_edit }}">
+                <h2>{{ i.pk }}</h2>
+                <img class="img_base" src="{{ i.image_image.url }}">
+                <img class="img_qr" src="{{ i.qr }}">
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

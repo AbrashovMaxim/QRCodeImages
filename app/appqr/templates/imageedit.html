@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Создание QR-кода {% endblock %}
+{% block head %}
+    <style>
+        div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .img_base {
+            width: 50%;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div>
+        <img class="img_base" src="{{ image.image_image.url }}" alt="">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image_new">
+
+            <button type="sumbit">Изменить изображение</button>
+        </form>
+    </div>
+
+{% endblock %}

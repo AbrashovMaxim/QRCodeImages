@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Создание QR-кода {% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            {% for field in form %}
+            
+                {{ field.label_tag }} {{ field }}
+                <div style="color: red">
+                    {{ field.errors }}
+                </div>
+            
+            {% endfor %}
+        </div>
+        <button type="sumbit">Создать QR-код</button>
+    </form>
+    {% endif %}
+
+{% endblock %}
